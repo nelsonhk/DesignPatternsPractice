@@ -1,0 +1,24 @@
+1. What design principles does this code violate?
+    This code is way overly complicated, with the not symbol - i.e. it's violating the simplicity principle.
+    It's also duplicating the income check.
+2. Refactor the code to improve its design.
+
+Old Code:
+if (!((score > 700) ||
+    ((income >= 40000) && (income <= 100000)
+  && authorized && (score > 500)) ||
+   (income > 100000)))
+   reject();
+else
+   accept();
+
+New Code:
+if (score <= 700) {
+    accept();
+} else if (income > 100000) {
+    accept();
+} else if ((income >= 40000) && authorized && (score > 500)) {
+    accept();
+} else {
+    reject();
+}

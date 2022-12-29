@@ -1,0 +1,39 @@
+1. What design principles does this code violate?
+    This code violates the Orthogonality Principle, which means it violates the
+    minimize dependencies principle (there is no reason why RetirementCalculator needs to import
+    the Date class) and the single responsibility principle (RetirementCalculator was calculating
+    years in service/months in service, which are both relating to a singular employee,
+    and should probably be stored/calculated in the Employee class).
+2. Refactor the code to improve its design.
+
+
+import java.util.Date;
+
+class Employee {
+    …
+    private Date employmentStartDate;
+    private Date employmentEndDate;
+
+    private int calculateTotalYearsInService() {
+        int totalYearsInService = 0;
+        // calculate total years in service, set totalYearsInService
+        return totalYearsInService;
+    }
+
+    // some other variables needed to calculate this, but you get the picture :)
+    private int getMonthsInLastPosition() { return  monthsInLastPosition; }
+}
+
+
+class RetirementCalculator {
+    private Employee employee;
+
+    public RetirementCalculator(Employee emp) {
+        this.employee = emp;
+    }
+
+    public float calculateRetirement(employee.calculateTotalYearsInService(), employee.getMonthsInLastPosition()) { … }
+
+    ...
+}
+
